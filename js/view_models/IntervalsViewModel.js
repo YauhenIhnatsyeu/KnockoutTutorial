@@ -1,5 +1,6 @@
 import Interval from "../models/Interval";
 import days from "../constants/days";
+import disableButtonValues from "../constants/disableButtonValues";
 
 export default class IntrevalsViewModel {
     constructor(intervalsModelParam) {
@@ -13,10 +14,11 @@ export default class IntrevalsViewModel {
     
         this.disableButtonValue = ko.computed(() =>
             this.controlsDisabled()
-                ? "Disabled"
-                : "Enabled"
+                ? disableButtonValues.enable
+                : disableButtonValues.disable
         );
     
+        //Subscribe on intervals array changed
         this.intervalsModel.subscribe((newIntervals) => {
             this.intervals(newIntervals);
         });

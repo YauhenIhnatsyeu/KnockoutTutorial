@@ -9,7 +9,7 @@ export default class IntervalsModel {
         this.onIntervalsChanged = new Event();
     }
     
-
+    //Subscribe on intervals array changed
     subscribe = (callback) => {
         this.onIntervalsChanged.subscribe(() => callback(this.intervals));
     }
