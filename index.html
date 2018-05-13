@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tutorial</title>
+
+    <link rel="stylesheet" href="css/jquery.timepicker.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Day
+            </th>
+            <th>
+                Start time
+            </th>
+            <th>
+                End time
+            </th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: intervals">
+        <tr>
+            <td>
+                <select data-bind="
+                    options: $root.days,
+                    value: day || null,
+                    optionsCaption: 'Choose...',
+                    event: { change: $root.daysSelectChanged },
+                    disable: $root.controlsDisabled">
+                </select>
+            </td>
+            <td>
+                <input
+                    class="timepicker"
+                    data-bind="
+                        timepicker: {
+                            defaultTime: new Date(start),
+                            onChange: $root.startPickerChanged },
+                        disable: $root.controlsDisabled">
+                </input>
+            </td>
+            <td>
+                <input
+                    class="timepicker"
+                    data-bind="
+                        timepicker: {
+                            defaultTime: new Date(end),
+                            onChange: $root.endPickerChanged },
+                        disable: $root.controlsDisabled">
+                </input>
+            </td>
+            <td>
+                <a
+                    href="#"
+                    data-bind="
+                        linkDisabled: $root.controlsDisabled,
+                        click: $root.remove">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<input type="button" data-bind="click: add, disable: $root.controlsDisabled" value="Add interval"></input>
+<input type="button" data-bind="click: save, disable: $root.controlsDisabled" value="Save"></input>
+<input type="button" data-bind="click: load, disable: $root.controlsDisabled" value="Load"></input>
+<input type="button" data-bind="click: disable, value: disableButtonValue"></input>
+
+<script src="js/jquery.timepicker.min.js"></script>
+<script src="js/knockout.js"></script>
+<script src="js/knockout.mapping-latest.js"></script>
+<script src="/public/bundle.js"></script>
+
+</body>
+</html>
