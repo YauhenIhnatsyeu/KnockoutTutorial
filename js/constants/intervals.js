@@ -1,4 +1,4 @@
-import Interval from "../js/Interval";
+import Interval from "../models/Interval";
 import days from "./days";
 import dates from "./dates";
 

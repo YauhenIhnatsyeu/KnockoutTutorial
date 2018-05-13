@@ -1,4 +1,4 @@
-import Interval from "./Interval";
+import Interval from "../models/Interval";
 import days from "../constants/days";
 
 export default class IntrevalsViewModel {

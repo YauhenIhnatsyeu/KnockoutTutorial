@@ -1,5 +1,5 @@
-import IntervalsModel from "./IntervalsModel";
-import IntrevalsViewModel from "./IntervalsViewModel";
+import IntervalsModel from "./models/IntervalsModel";
+import IntrevalsViewModel from "./view_models/IntervalsViewModel";
 
 Array.prototype.remove = function(itemToRemove) {
     for (let i = 0; i < this.length; i++) {

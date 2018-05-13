@@ -1,6 +1,6 @@
 import Interval from "./Interval";
 import intervals from "../constants/intervals";
-import Event from "./Event";
+import Event from "../utils/Event";
 
 export default class IntervalsModel {
     constructor() {
