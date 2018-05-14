@@ -1,0 +1,12 @@
+.buttons__button {
+    margin-right: 0.75rem;
+    padding: 0.75rem;
+
+    background-color: #ffffff;
+
+    border: solid 1px #489EDA;
+}
+
+.buttons__button:last-child {
+    margin-right: 0;
+}

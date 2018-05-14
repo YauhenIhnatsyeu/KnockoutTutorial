@@ -1,3 +1,9 @@
+.table {
+    padding: 1rem;
+
+    border: solid 1px #c2bdbd;
+}
+
 .table__head {
     font-weight: bold;
 }
