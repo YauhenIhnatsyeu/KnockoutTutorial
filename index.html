@@ -6,72 +6,88 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Knockout</title>
 
+    <link rel="stylesheet" href="css/reset.css">
+
     <link rel="stylesheet" href="css/jquery.timepicker.min.css">
+
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/wrapper.css">
+
+    <link rel="stylesheet" href="css/table.css">
 </head>
 <body>
+<div class="wrapper">
+    <div class="table">
+        <table>
+            <thead class="table__head">
+                <tr class="table__row">
+                    <th>
+                        Day
+                    </th>
+                    <th>
+                        Start time
+                    </th>
+                    <th>
+                        End time
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table__body" data-bind="foreach: intervals">
+                <tr class="table__row">
+                    <td>
+                        <select
+                            class="table__input"
+                            data-bind="
+                                options: $root.days,
+                                value: day || null,
+                                optionsCaption: 'Choose...',
+                                event: { change: $root.daysSelectChanged },
+                                disable: $root.controlsDisabled">
+                        </select>
+                    </td>
+                    <td>
+                        <input
+                            class="table__input timepicker"
+                            data-bind="
+                                timepicker: {
+                                    defaultTime: new Date(start),
+                                    onChange: $root.startPickerChanged },
+                                disable: $root.controlsDisabled">
+                        </input>
+                    </td>
+                    <td>
+                        <input
+                            class="table__input timepicker"
+                            data-bind="
+                                timepicker: {
+                                    defaultTime: new Date(end),
+                                    onChange: $root.endPickerChanged },
+                                disable: $root.controlsDisabled">
+                        </input>
+                    </td>
+                    <td>
+                        <a
+                            href="#"
+                            class="table__link"
+                            data-bind="
+                                css: `table__link_${$root.controlsDisabled() ? 'disabled' : 'enabled'}`,
+                                click: $root.remove">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    
+    <input type="button" data-bind="click: add, disable: $root.controlsDisabled" value="Add interval"></input>
+    <input type="button" data-bind="click: save, disable: $root.controlsDisabled" value="Save"></input>
+    <input type="button" data-bind="click: load, disable: $root.controlsDisabled" value="Load"></input>
+    <input type="button" data-bind="click: disable, value: disableButtonValue"></input>
+</div>
 
-<table>
-    <thead>
-        <tr>
-            <th>
-                Day
-            </th>
-            <th>
-                Start time
-            </th>
-            <th>
-                End time
-            </th>
-        </tr>
-    </thead>
-    <tbody data-bind="foreach: intervals">
-        <tr>
-            <td>
-                <select data-bind="
-                    options: $root.days,
-                    value: day || null,
-                    optionsCaption: 'Choose...',
-                    event: { change: $root.daysSelectChanged },
-                    disable: $root.controlsDisabled">
-                </select>
-            </td>
-            <td>
-                <input
-                    class="timepicker"
-                    data-bind="
-                        timepicker: {
-                            defaultTime: new Date(start),
-                            onChange: $root.startPickerChanged },
-                        disable: $root.controlsDisabled">
-                </input>
-            </td>
-            <td>
-                <input
-                    class="timepicker"
-                    data-bind="
-                        timepicker: {
-                            defaultTime: new Date(end),
-                            onChange: $root.endPickerChanged },
-                        disable: $root.controlsDisabled">
-                </input>
-            </td>
-            <td>
-                <a
-                    href="#"
-                    data-bind="
-                        linkDisabled: $root.controlsDisabled,
-                        click: $root.remove">
-                    Delete
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
 
-<input type="button" data-bind="click: add, disable: $root.controlsDisabled" value="Add interval"></input>
-<input type="button" data-bind="click: save, disable: $root.controlsDisabled" value="Save"></input>
-<input type="button" data-bind="click: load, disable: $root.controlsDisabled" value="Load"></input>
-<input type="button" data-bind="click: disable, value: disableButtonValue"></input>
 
 <script src="public/jquery.min.js"></script>
 <script src="js/components/jquery.timepicker.min.js"></script>
